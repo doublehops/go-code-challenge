@@ -27,19 +27,15 @@ func New() *Handler {
 // CheckDevice - Handler for POST payload
 func (h *Handler) CheckDevice(c *gin.Context) error {
 
-	var devices api.DeviceCheckDetails
-	if err := c.ShouldBindJSON(&devices); err != nil {
+	var device api.DeviceCheckDetails
+	if err := c.ShouldBindJSON(&device); err != nil {
 		return fmt.Errorf("could not parse payload: %s", err.Error())
 	}
 
-	//fmt.Printf("%s", devices)
-	//
 	validate = validator.New()
-	for _, device := range devices {
-		err := validate.Struct(device)
-		if err != nil {
-			return err
-		}
+	err := validate.Struct(device)
+	if err != nil {
+		return err
 	}
 
 	return nil

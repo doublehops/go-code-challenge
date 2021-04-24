@@ -14,5 +14,5 @@ type Device struct {
 }
 
 type DeviceCheckDetails struct {
-	Devices []Device `json:"deviceCheckDetails" validate:"required"`
+	Devices Device `json:"deviceCheckDetails" validate:"required"`
 }

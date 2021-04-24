@@ -1,9 +1,12 @@
 package main
 
 import (
+	"fmt"
+
 	"github.com/gin-gonic/gin"
 
 	"codechallenge.local/internal/pkg/handlers/device"
+	"codechallenge.local/internal/pkg/types/api"
 )
 
 var (
@@ -16,7 +19,13 @@ func main() {
 
 	r.POST("/isgood", func(ctx *gin.Context) {
 
-		err := dh.CheckDevice(ctx)
+		var device api.DeviceCheckDetails
+		if err := ctx.ShouldBindJSON(&device); err != nil {
+			//return fmt.Errorf("could not parse payload: %s", err.Error())
+			ctx.JSON(422, gin.H{"error": fmt.Sprintf("Unable to process request. %s", err.Error())})
+		}
+
+		err := dh.CheckDevice(&device)
 		if err != nil {
 			ctx.JSON(422, gin.H{"error": err.Error()})
 			return

@@ -3,7 +3,6 @@ package device
 import (
 	"fmt"
 
-	"github.com/gin-gonic/gin"
 	"github.com/go-playground/validator/v10"
 
 	"codechallenge.local/internal/pkg/types/api"
@@ -25,15 +24,10 @@ func New() *Handler {
 }
 
 // CheckDevice - Handler for POST payload
-func (h *Handler) CheckDevice(c *gin.Context) error {
-
-	var device api.DeviceCheckDetails
-	if err := c.ShouldBindJSON(&device); err != nil {
-		return fmt.Errorf("could not parse payload: %s", err.Error())
-	}
+func (h *Handler) CheckDevice(d *api.DeviceCheckDetails) error {
 
 	validate = validator.New()
-	err := validate.Struct(device)
+	err := validate.Struct(d)
 	if err != nil {
 		return err
 	}

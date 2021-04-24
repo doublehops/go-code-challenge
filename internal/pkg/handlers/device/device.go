@@ -3,6 +3,7 @@ package device
 import (
 	"fmt"
 
+	"github.com/davecgh/go-spew/spew"
 	"github.com/gin-gonic/gin"
 	"github.com/go-playground/validator/v10"
 
@@ -27,15 +28,21 @@ func New() *Handler {
 // CheckDevice - Handler for POST payload
 func (h *Handler) CheckDevice(c *gin.Context) error {
 
-	var device api.Device
-	if err := c.ShouldBindJSON(&device); err != nil {
+	var devices api.DeviceCheckDetails
+	if err := c.ShouldBindJSON(&devices); err != nil {
 		return fmt.Errorf("could not parse payload: %s", err.Error())
 	}
 
+	spew.Dump(devices)
+
+	//fmt.Printf("%s", devices)
+	//
 	validate = validator.New()
-	err := validate.Struct(device)
-	if err != nil {
-		return err
+	for _, device := range devices {
+		err := validate.Struct(device)
+		if err != nil {
+			return err
+		}
 	}
 
 	return nil

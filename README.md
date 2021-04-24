@@ -14,3 +14,21 @@ required.
 - In my experience, Go APIs try to parse JSON before trying to validate. 
   Therefore, if the JSON object doesn't match the struct, the application is likely
   to fail with a 500 response. There must be a better way to handle this.
+  
+## OTHER
+
+Singular payload
+```
+{
+    "checkType": "DEVICE",
+    "activityType": "PAYMENT",
+    "checkSessionKey": "three",
+    "activityData": [
+        {
+            "kvpKey": "mykeyXXX",
+            "kvpValue": "kvpValueXXX",
+            "kvpType": "kvpTypeXXX"
+        }
+    ]
+}
+```

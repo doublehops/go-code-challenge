@@ -3,6 +3,7 @@ module codechallenge.local
 go 1.16
 
 require (
+	github.com/davecgh/go-spew v1.1.1
 	github.com/gin-gonic/gin v1.7.1
 	github.com/go-playground/validator/v10 v10.5.0
 	github.com/golang/protobuf v1.5.2 // indirect

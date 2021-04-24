@@ -16,6 +16,7 @@ including tests.
 ## RUNNING
 
 - Clone repository with `git clone git@github.comdoublehops/go-code-challenge.git`
+- Possibly need to run `go mod vendor && go get -u ./...` to download dependencies.
 - Run `go run cmd/server/main.go`
 
 This will start a webserver on port 8080. Make a request with cURL:

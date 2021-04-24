@@ -9,7 +9,7 @@ I have been unable to have the test http request test the response body properly
 continue to investigate but I've gone beyond the expected time to work on this so
 I'll leave as is. I think this work includes a good example of how I go about development.
 
-PLEASE REFER to the `singlar-device-payload` branch for the completed work
+**PLEASE REFER** to the `singlar-device-payload` branch for the completed work
 including tests.
 
 

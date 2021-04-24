@@ -1,22 +1,24 @@
 package device
 
 import (
-	"codechallenge.local/internal/pkg/types/api"
-	"github.com/stretchr/testify/assert"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
+
+	"codechallenge.local/internal/pkg/types/api"
 )
 
 func TestCreateRecordSuccess(t *testing.T) {
 
 	payload := &api.DeviceCheckDetails{
 		Devices: api.Device{
-			CheckType: "DEVICE",
-			ActivityType: "PAYMENT",
+			CheckType:       "DEVICE",
+			ActivityType:    "PAYMENT",
 			CheckSessionKey: "Test",
 			ActivityData: []api.ActivityData{{
-				KvpKey: "testKey",
+				KvpKey:   "testKey",
 				KvpValue: "testValue",
-				KvpType: "testType",
+				KvpType:  "testType",
 			}},
 		},
 	}
@@ -31,13 +33,13 @@ func TestCreateRecordValidationFail(t *testing.T) {
 
 	payload := &api.DeviceCheckDetails{
 		Devices: api.Device{
-			CheckType: "INCORRECT_VALUE",
-			ActivityType: "INCORRECT_ALSO",
+			CheckType:       "INCORRECT_VALUE",
+			ActivityType:    "INCORRECT_ALSO",
 			CheckSessionKey: "Test",
 			ActivityData: []api.ActivityData{{
-				KvpKey: "testKey",
+				KvpKey:   "testKey",
 				KvpValue: "testValue",
-				KvpType: "testType",
+				KvpType:  "testType",
 			}},
 		},
 	}

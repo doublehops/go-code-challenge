@@ -16,3 +16,7 @@ type Device struct {
 type DeviceCheckDetails struct {
 	Devices Device `json:"deviceCheckDetails" validate:"required"`
 }
+
+type GoodResponse struct {
+	Puppy string `json:"puppy"`
+}

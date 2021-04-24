@@ -21,7 +21,6 @@ func main() {
 
 		var device api.DeviceCheckDetails
 		if err := ctx.ShouldBindJSON(&device); err != nil {
-			//return fmt.Errorf("could not parse payload: %s", err.Error())
 			ctx.JSON(422, gin.H{"error": fmt.Sprintf("Unable to process request. %s", err.Error())})
 		}
 
@@ -31,7 +30,7 @@ func main() {
 			return
 		}
 
-		ctx.JSON(200, gin.H{"puppy": true})
+		ctx.JSON(200, gin.H{"puppy": "true"})
 	})
 
 	r.Run()

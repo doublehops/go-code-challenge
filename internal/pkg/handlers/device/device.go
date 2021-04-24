@@ -3,7 +3,6 @@ package device
 import (
 	"fmt"
 
-	"github.com/davecgh/go-spew/spew"
 	"github.com/gin-gonic/gin"
 	"github.com/go-playground/validator/v10"
 
@@ -32,8 +31,6 @@ func (h *Handler) CheckDevice(c *gin.Context) error {
 	if err := c.ShouldBindJSON(&devices); err != nil {
 		return fmt.Errorf("could not parse payload: %s", err.Error())
 	}
-
-	spew.Dump(devices)
 
 	//fmt.Printf("%s", devices)
 	//

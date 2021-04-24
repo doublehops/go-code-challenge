@@ -1,3 +1,43 @@
+## APPLICATION NOTES
+
+This application was built with Go 1.16.3. 
+
+## RUNNING
+
+- Clone repository with `git clone git@github.comdoublehops/go-code-challenge.git`
+- Run `go run cmd/server/main.go`
+
+This will start a webserver on port 8080. Make a request with cURL:
+```bigquery
+curl --location --request POST 'localhost:8080/isgood' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "deviceCheckDetails": [
+        {
+            "checkType": "DEVICE",
+            "activityType": "PAYMENT",
+            "checkSessionKey": "three",
+            "activityData": [
+                {
+                    "kvpKey": "mykeyXXX",
+                    "kvpValue": "kvpValueXXX",
+                    "kvpType": "kvpTypeXXX"
+                }
+            ]
+        }
+    ]
+}'
+```
+
+## TESTING
+
+Run tests: `go test ./...`
+
+## THIRD PARTY LIBRARIES USED
+
+- github.com/gin-gonic/gin
+- github.com/go-playground/validator/v10
+
 ## ASSUMPTIONS
 
 - All fields are required. Swagger has no ability to set child properties as
